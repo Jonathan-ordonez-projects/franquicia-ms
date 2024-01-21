@@ -1,0 +1,28 @@
+USE franchises;
+
+-- CREATE TABLE franchise (
+--     id int NOT NULL AUTO_INCREMENT,
+--     name varchar(255) NOT NULL,
+--     PRIMARY KEY (id)
+-- );
+--
+-- CREATE TABLE branch (
+--     id int NOT NULL AUTO_INCREMENT,
+--     name varchar(255) NOT NULL,
+--     id_franchise int NOT NULL,
+--     PRIMARY KEY (id),
+--     FOREIGN KEY (id_franchise) REFERENCES franchise(id)
+-- );
+--
+-- CREATE TABLE product (
+--     id int NOT NULL AUTO_INCREMENT,
+--     name varchar(255) NOT NULL,
+--     PRIMARY KEY (id)
+-- )
+--
+-- CREATE TABLE branch_product (
+--     id_branch int NOT NULL,
+--     id_product int NOT NULL,
+--     FOREIGN KEY (id_branch) REFERENCES branch(id),
+--     FOREIGN KEY (id_product) REFERENCES product(id)
+-- )

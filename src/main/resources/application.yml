@@ -1,0 +1,35 @@
+server:
+  port: 8090
+  servlet:
+    context-path: /api/v1
+
+  #beans:
+  #  exceptions:
+  #    type: com.api.franquicia.commons.exceptions
+
+spring:
+  application:
+    name: fraquicias-ms
+
+#datasource:
+#  my-connection:
+#    jdbc-url: jdbc:mysql://localhost:13306/franchises?useSSL=false
+#    username: mysqluser
+#    password: secret
+#    maximum-pool-size: 10
+#    pool-name: "franchise-pool"
+#    auto-commit: true
+
+  datasource:
+    url: jdbc:mysql://localhost:13306/franchises?useSSL=false
+    username: mysqluser
+    password: secret
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: update
