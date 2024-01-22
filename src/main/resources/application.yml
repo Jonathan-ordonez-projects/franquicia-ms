@@ -1,5 +1,5 @@
 server:
-  port: 8091
+  port: 8090
   servlet:
     context-path: /api/v1
 
@@ -8,9 +8,9 @@ spring:
     name: fraquicias-ms
 
   datasource:
-    url: jdbc:mysql://${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_NAME}?allowPublicKeyRetrieval=true&useSSL=false
-    username: ${DATABASE_USER}
-    password: ${DATABASE_PASSWORD}
+    url: jdbc:mysql://${DATABASE_HOST:localhost}:${DATABASE_PORT:3306}/${DATABASE_NAME:franchises}?allowPublicKeyRetrieval=true&useSSL=false
+    username: ${DATABASE_USER:mysqluser}
+    password: ${DATABASE_PASSWORD:secret}
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
