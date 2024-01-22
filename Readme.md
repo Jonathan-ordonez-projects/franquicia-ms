@@ -41,13 +41,6 @@ Para Linux y MAC
 ```sh
 sudo docker compose up -d
 ```
-
-Para terminar los contenedores creados usamos el siguiente comando:
-
-```sh
-sudo docker compose down
-```
-
 - Se visualizará un resultado como el siguiente:
 
 ✔ Network franquicia_default      Created
@@ -56,6 +49,12 @@ sudo docker compose down
 ✔ Container franquicias-app       Started
 
 Esperar unos minutos que se aprovisionen los contenedores y ya queda lista la aplicación para su uso.
+
+Para terminar los contenedores creados usamos el siguiente comando:
+
+```sh
+sudo docker compose down
+```
 
 ## Consumos de APIS
 
