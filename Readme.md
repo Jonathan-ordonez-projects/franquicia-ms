@@ -42,6 +42,12 @@ Para Linux y MAC
 sudo docker compose up -d
 ```
 
+Para terminar los contenedores creados usamos el siguiente comando:
+
+```sh
+sudo docker compose down
+```
+
 - Se visualizará un resultado como el siguiente:
 
 ✔ Network franquicia_default      Created
