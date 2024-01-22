@@ -50,26 +50,31 @@ public class FranchiseServiceImpl implements FranchiseService {
     }
 
     public ResponseDto getProductsStockForbranchForFranchise(Long id) {
-        Franchise franchise = franchiseRepository.findById(id).orElseThrow(() -> new RequestException(IDFRANCHISENOTEXIST,CODEFRANCHISENOTEXIST,HttpStatus.BAD_REQUEST));
-        List<Branch> branches = franchise.getBranches();
+        Optional<Franchise> franchise = franchiseRepository.findById(id);
+        if (franchise.isEmpty()){
+            throw new RequestException(IDFRANCHISENOTEXIST,CODEFRANCHISENOTEXIST,HttpStatus.BAD_REQUEST);
+        }
+        List<Branch> branches = franchise.get().getBranches();
         ArrayList<ProductDto> listProduct = new ArrayList<>();
         ArrayList<BranchDto> listBranch = new ArrayList<>();
         for (Branch branch : branches) {
             ProductDto productDto = new ProductDto();
             BranchDto branchDto = new BranchDto();
             List<Product> products = branch.getProducts();
-            Product product = products.stream()
-                    .max(Comparator.comparingDouble(product1 -> product1.getStock()))
-                    .orElse(null);
-            productDto.setStock(product.getStock());
-            productDto.setName(product.getName());
-            listProduct.add(productDto);
-            branchDto.setNameBranch(branch.getName());
-            branchDto.setProductWithMoreStoke(productDto);
-            listBranch.add(branchDto);
+            if(!products.isEmpty()) {
+                Product product = products.stream()
+                        .max(Comparator.comparingDouble(product1 -> product1.getStock()))
+                        .orElse(null);
+                productDto.setStock(product.getStock());
+                productDto.setName(product.getName());
+                listProduct.add(productDto);
+                branchDto.setNameBranch(branch.getName());
+                branchDto.setProductWithMoreStoke(productDto);
+                listBranch.add(branchDto);
+            }
         }
         FranchiseDto franchiseDto = new FranchiseDto();
-        franchiseDto.setFranchisesName(franchise.getName());
+        franchiseDto.setFranchisesName(franchise.get().getName());
         franchiseDto.setBranches(listBranch);
         ResponseDto responseDto = new ResponseDto();
         new ResponseOkDto(responseDto,GETPRODUCTFORBRANCHFORFRANCHISE,franchiseDto);
